@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привилегии - Impulse Zero</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="nav-logo">
+                <span class="logo-text">IMPULSE ZERO</span>
+            </div>
+            <div class="currency-selector">
+                <select id="currencySelect">
+                    <option value="uah">UAH ₴</option>
+                    <option value="usd">USD $</option>
+                    <option value="eur">EUR €</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-title">IMPULSE ZERO</span>
+            <div class="close-btn">&times;</div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="index.html" class="menu-item">Главная</a>
+            <a href="privileges.html" class="menu-item">Привилегии</a>
+            <a href="cases.html" class="menu-item">Кейсы</a>
+            <a href="#rules" class="menu-item">Правила</a>
+            <a href="#contacts" class="menu-item">Контакты</a>
+        </div>
+    </div>
+
+    <section class="privileges">
+        <div class="container">
+            <h2 class="section-title">ПРИВИЛЕГИИ</h2>
+            <div class="privileges-grid" id="privilegesGrid">
+                <!-- Привилегии загружаются через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Оплата</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="payment-info">
+                    <div class="card-number">4441 1144 3783 5349</div>
+                    <div class="payment-amount" id="paymentAmount">0 ₴</div>
+                    <div class="payment-notice">
+                        К сожалению сейчас нет возможности настроить оплату картой или Google Pay. Пока что только переводом. Приносим извинения, постараемся что-нибудь придумать.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
