@@ -24,13 +24,18 @@ let currentCurrency = 'uah';
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', function() {
-    loadPrivileges();
+    // Загружаем привилегии только если находимся на странице привилегий
+    if (document.getElementById('privilegesGrid')) {
+        loadPrivileges();
+    }
     setupEventListeners();
 });
 
 // Загрузка привилегий
 function loadPrivileges() {
     const grid = document.getElementById('privilegesGrid');
+    if (!grid) return;
+    
     grid.innerHTML = '';
     
     privileges.forEach(privilege => {
@@ -52,31 +57,60 @@ function loadPrivileges() {
 // Настройка обработчиков событий
 function setupEventListeners() {
     // Бургер-меню
-    document.querySelector('.hamburger-menu').addEventListener('click', toggleSidebar);
-    document.querySelector('.close-btn').addEventListener('click', toggleSidebar);
+    const hamburger = document.querySelector('.hamburger-menu');
+    const closeBtn = document.querySelector('.close-btn');
+    
+    if (hamburger) {
+        hamburger.addEventListener('click', toggleSidebar);
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', toggleSidebar);
+    }
     
     // Выбор валюты
-    document.getElementById('currencySelect').addEventListener('change', function(e) {
-        currentCurrency = e.target.value;
-        loadPrivileges();
-        updateCasePrices();
-    });
+    const currencySelect = document.getElementById('currencySelect');
+    if (currencySelect) {
+        currencySelect.addEventListener('change', function(e) {
+            currentCurrency = e.target.value;
+            if (document.getElementById('privilegesGrid')) {
+                loadPrivileges();
+            }
+            updateCasePrices();
+        });
+    }
     
     // Закрытие модального окна
-    document.querySelector('.close-modal').addEventListener('click', closeModal);
-    document.getElementById('paymentModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-    });
+    const closeModalBtn = document.querySelector('.close-modal');
+    const paymentModal = document.getElementById('paymentModal');
+    
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+    if (paymentModal) {
+        paymentModal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    }
     
     // Закрытие меню при клике на ссылку
     document.querySelectorAll('.menu-item').forEach(item => {
         item.addEventListener('click', toggleSidebar);
     });
+    
+    // Закрытие по ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
 }
 
 // Переключение бокового меню
 function toggleSidebar() {
-    document.querySelector('.sidebar').classList.toggle('active');
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+        sidebar.classList.toggle('active');
+    }
 }
 
 // Показать окно оплаты
@@ -84,15 +118,23 @@ function showPayment(priceUAH, productName) {
     const priceInCurrency = (priceUAH * exchangeRates[currentCurrency].rate).toFixed(2);
     const symbol = exchangeRates[currentCurrency].symbol;
     
-    document.getElementById('paymentAmount').textContent = 
-        `${priceInCurrency} ${symbol} (${productName})`;
+    const paymentAmount = document.getElementById('paymentAmount');
+    if (paymentAmount) {
+        paymentAmount.textContent = `${priceInCurrency} ${symbol} (${productName})`;
+    }
     
-    document.getElementById('paymentModal').style.display = 'block';
+    const paymentModal = document.getElementById('paymentModal');
+    if (paymentModal) {
+        paymentModal.style.display = 'block';
+    }
 }
 
 // Закрыть модальное окно
 function closeModal() {
-    document.getElementById('paymentModal').style.display = 'none';
+    const paymentModal = document.getElementById('paymentModal');
+    if (paymentModal) {
+        paymentModal.style.display = 'none';
+    }
 }
 
 // Обновление цен кейсов
@@ -103,13 +145,8 @@ function updateCasePrices() {
         const symbol = exchangeRates[currentCurrency].symbol;
         
         const btn = card.querySelector('.buy-btn');
-        btn.setAttribute('onclick', `showPayment(${priceUAH}, '${card.querySelector('h3').textContent}')`);
+        if (btn) {
+            btn.setAttribute('onclick', `showPayment(${priceUAH}, '${card.querySelector('h3').textContent}')`);
+        }
     });
 }
-
-// Закрытие модального окна по ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
-});
