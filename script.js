@@ -10,19 +10,17 @@ const privileges = [
     { name: "PRINCE", price: 115 }
 ];
 
-// Курсы валют (примерные)
+// Курсы валют
 const exchangeRates = {
     uah: { symbol: '₴', rate: 1 },
     usd: { symbol: '$', rate: 0.027 },
     eur: { symbol: '€', rate: 0.025 }
 };
 
-// Текущая валюта
 let currentCurrency = 'uah';
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', function() {
-    // Загружаем привилегии только если находимся на странице привилегий
     if (document.getElementById('privilegesGrid')) {
         loadPrivileges();
     }
@@ -152,7 +150,6 @@ function updateCasePrices() {
 // Копирование текста в буфер обмена
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(function() {
-        // Показываем уведомление об успешном копировании
         const btn = event.target;
         const originalText = btn.textContent;
         btn.textContent = 'СКОПИРОВАНО!';
