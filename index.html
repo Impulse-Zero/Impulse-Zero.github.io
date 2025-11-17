@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impulse Zero - Minecraft Server</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Навигация -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="hamburger-menu">
@@ -17,7 +17,9 @@
                 <div class="bar"></div>
             </div>
             <div class="nav-logo">
-                <span class="logo-text">IMPULSE ZERO</span>
+                <a href="index.html" class="logo-link">
+                    <span class="logo-text">IMPULSE ZERO</span>
+                </a>
             </div>
             <div class="currency-selector">
                 <select id="currencySelect">
@@ -32,14 +34,15 @@
     <!-- Боковое меню -->
     <div class="sidebar">
         <div class="sidebar-header">
-            <span class="sidebar-title">IMPULSE ZERO</span>
+            <a href="index.html" class="sidebar-title-link">
+                <span class="sidebar-title">IMPULSE ZERO</span>
+            </a>
             <div class="close-btn">&times;</div>
         </div>
         <div class="sidebar-menu">
             <a href="index.html" class="menu-item">Главная</a>
             <a href="privileges.html" class="menu-item">Привилегии</a>
             <a href="cases.html" class="menu-item">Кейсы</a>
-            <a href="#rules" class="menu-item">Правила</a>
             <a href="#contacts" class="menu-item">Контакты</a>
         </div>
     </div>
@@ -52,22 +55,39 @@
             <div class="server-info">
                 <div class="info-card">
                     <span class="info-label">Онлайн</span>
-                    <span class="info-value">0/50</span>
+                    <span class="info-value">0/1000</span>
                 </div>
                 <div class="info-card">
                     <span class="info-label">Версия</span>
-                    <span class="info-value">1.16.5</span>
+                    <span class="info-value">1.20.1</span>
                 </div>
                 <div class="info-card">
                     <span class="info-label">IP</span>
-                    <span class="info-value">impulse-zero.com</span>
+                    <span class="info-value">impulse-zero.aternos.me</span>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="chevron"></div>
-            <div class="chevron"></div>
-            <div class="chevron"></div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2 class="section-title">СЛУЖБА ПОДДЕРЖКИ</h2>
+            <p class="contacts-subtitle">Пока что только в Телеграмме</p>
+            <div class="contact-info">
+                <div class="telegram-contact">
+                    <div class="contact-card">
+                        <h3>Telegram бот</h3>
+                        <div class="copy-section">
+                            <span class="contact-text">@impulse_zero_bot</span>
+                            <button class="copy-btn" onclick="copyToClipboard('@impulse_zero_bot')">
+                                КОПИРОВАТЬ
+                            </button>
+                        </div>
+                        <p class="contact-or">или перейдите по <a href="https://t.me/impulse_zero_bot" target="_blank" class="contact-link">ссылке</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
