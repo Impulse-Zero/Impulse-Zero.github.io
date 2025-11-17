@@ -149,17 +149,92 @@ function updateCasePrices() {
 
 // Копирование текста в буфер обмена
 function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = 'СКОПИРОВАНО!';
-        btn.style.background = 'linear-gradient(45deg, #00ff00, #00cc00)';
+    // Создаем временный input элемент
+    const tempInput = document.createElement('input');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    
+    // Выделяем и копируем текст
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); // Для мобильных устройств
+    
+    try {
+        const successful = document.execCommand('copy');
+        document.body.removeChild(tempInput);
         
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = 'linear-gradient(45deg, #ff0000, #cc0000)';
-        }, 2000);
-    }).catch(function(err) {
+        if (successful) {
+            // Показываем уведомление об успешном копировании
+            const btn = event.target;
+            const originalText = btn.textContent;
+            const originalBackground = btn.style.background;
+            
+            btn.textContent = 'СКОПИРОВАНО!';
+            btn.style.background = 'linear-gradient(45deg, #00ff00, #00cc00)';
+            btn.style.color = '#000';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = originalBackground;
+                btn.style.color = 'white';
+            }, 2000);
+        }
+    } catch (err) {
+        document.body.removeChild(tempInput);
         console.error('Ошибка копирования: ', err);
-    });
+        
+        // Альтернативный способ через Clipboard API
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(function() {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                const originalBackground = btn.style.background;
+                
+                btn.textContent = 'СКОПИРОВАНО!';
+                btn.style.background = 'linear-gradient(45deg, #00ff00, #00cc00)';
+                btn.style.color = '#000';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = originalBackground;
+                    btn.style.color = 'white';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Ошибка Clipboard API: ', err);
+                alert('Не удалось скопировать текст. Скопируйте вручную: ' + text);
+            });
+        } else {
+            alert('Скопируйте текст вручную: ' + text);
+        }
+    }
 }
+
+// Плавная прокрутка к якорям
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Закрытие меню при клике вне его области
+document.addEventListener('click', function(e) {
+    const sidebar = document.querySelector('.sidebar');
+    const hamburger = document.querySelector('.hamburger-menu');
+    
+    if (sidebar && sidebar.classList.contains('active') && 
+        !sidebar.contains(e.target) && 
+        !hamburger.contains(e.target)) {
+        sidebar.classList.remove('active');
+    }
+});
+
+// Предотвращение закрытия меню при клике внутри него
+document.querySelector('.sidebar').addEventListener('click', function(e) {
+    e.stopPropagation();
+});
