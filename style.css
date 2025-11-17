@@ -432,3 +432,113 @@ section {
         font-size: 1.4rem;
     }
 }
+/* Добавь эти стили в конец файла style.css */
+
+/* Ссылки для логотипа */
+.logo-link, .sidebar-title-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.logo-link:hover, .sidebar-title-link:hover {
+    opacity: 0.8;
+}
+
+/* Контакты */
+.contacts {
+    padding: 5rem 0;
+    background: linear-gradient(45deg, #0a0a0a 0%, #1a0000 100%);
+    text-align: center;
+}
+
+.contacts-subtitle {
+    font-size: 1.5rem;
+    color: #ff0000;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 100%);
+    border: 2px solid #ff0000;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    min-width: 300px;
+}
+
+.contact-card h3 {
+    color: #ff0000;
+    margin-bottom: 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.copy-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ff0000;
+}
+
+.contact-text {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.copy-btn {
+    background: linear-gradient(45deg, #ff0000, #cc0000);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+    white-space: nowrap;
+}
+
+.copy-btn:hover {
+    transform: scale(1.05);
+}
+
+.contact-or {
+    color: #ccc;
+    margin-top: 1rem;
+}
+
+.contact-link {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность для контактов */
+@media (max-width: 768px) {
+    .copy-section {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .contact-card {
+        min-width: 250px;
+    }
+}
