@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Навигация -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="hamburger-menu">
@@ -29,7 +28,6 @@
         </div>
     </nav>
 
-    <!-- Боковое меню -->
     <div class="sidebar">
         <div class="sidebar-header">
             <span class="sidebar-title">IMPULSE ZERO</span>
@@ -39,11 +37,10 @@
             <a href="index.html" class="menu-item">Главная</a>
             <a href="privileges.html" class="menu-item">Привилегии</a>
             <a href="cases.html" class="menu-item">Кейсы</a>
-            <a href="contacts.html" class="menu-item">Контакты</a>
+            <a href="rules.html" class="menu-item">Правила</a>
         </div>
     </div>
 
-    <!-- Главный экран -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="hero-title">IMPULSE ZERO</h1>
@@ -70,7 +67,28 @@
         </div>
     </section>
 
-    <!-- Модальное окно оплаты -->
+    <!-- Контакты внизу главной страницы -->
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2 class="section-title">КОНТАКТЫ</h2>
+            <div class="contact-info">
+                <div class="telegram-contact">
+                    <div class="contact-card">
+                        <h3>Служба поддержки</h3>
+                        <p class="support-text">Пока что только в Телеграмме</p>
+                        <div class="copy-section">
+                            <span class="contact-text">@impulse_zero_bot</span>
+                            <button class="copy-btn" onclick="copyToClipboard('@impulse_zero_bot')">
+                                КОПИРОВАТЬ
+                            </button>
+                        </div>
+                        <p class="contact-or">или перейдите по <a href="https://t.me/impulse_zero_bot" target="_blank" class="contact-link">ссылке</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
