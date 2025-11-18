@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кейсы - Impulse Zero</title>
+    <title>Привилегии - Impulse Zero</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -37,32 +37,15 @@
             <a href="index.html" class="menu-item">Главная</a>
             <a href="privileges.html" class="menu-item">Привилегии</a>
             <a href="cases.html" class="menu-item">Кейсы</a>
-            <a href="contacts.html" class="menu-item">Контакты</a>
+            <a href="rules.html" class="menu-item">Правила</a>
         </div>
     </div>
 
-    <section class="cases">
+    <section class="privileges">
         <div class="container">
-            <h2 class="section-title">КЕЙСЫ</h2>
-            <div class="cases-grid">
-                <div class="case-card" data-price="15">
-                    <div class="case-icon">🎁</div>
-                    <h3>Кейс с привилегиями</h3>
-                    <p>Шанс выиграть любую привилегию</p>
-                    <button class="buy-btn" onclick="showPayment(15, 'Кейс с привилегиями')">Купить</button>
-                </div>
-                <div class="case-card" data-price="4">
-                    <div class="case-icon">🪙</div>
-                    <h3>Кейс с монетами</h3>
-                    <p>От 5.000 до 500.000 монет</p>
-                    <button class="buy-btn" onclick="showPayment(4, 'Кейс с монетами')">Купить</button>
-                </div>
-                <div class="case-card" data-price="9">
-                    <div class="case-icon">⚡</div>
-                    <h3>Кейс с импульсивами</h3>
-                    <p>От 100 до 5.000 импульсивов</p>
-                    <button class="buy-btn" onclick="showPayment(9, 'Кейс с импульсивами')">Купить</button>
-                </div>
+            <h2 class="section-title">ПРИВИЛЕГИИ</h2>
+            <div class="privileges-grid" id="privilegesGrid">
+                <!-- Привилегии загружаются через JavaScript -->
             </div>
         </div>
     </section>
@@ -78,6 +61,7 @@
                     <div class="card-number">4441 1144 3783 5349</div>
                     <div class="payment-amount" id="paymentAmount">0 ₴</div>
                     <div class="payment-notice">
+                        <strong>ПОСЛЕ ОПЛАТЫ ОТПРАВЬТЕ ФОТО ПЕРЕВОДА В СЛУЖБУ ПОДДЕРЖКИ И ВАМ ВЫДАДУТ ТОВАР</strong><br><br>
                         К сожалению сейчас нет возможности настроить оплату картой или Google Pay. Пока что только переводом. Приносим извинения, постараемся что-нибудь придумать.
                     </div>
                 </div>
