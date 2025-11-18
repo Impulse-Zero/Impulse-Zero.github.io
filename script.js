@@ -116,7 +116,7 @@ function showPayment(priceUAH, productName) {
     
     const paymentAmount = document.getElementById('paymentAmount');
     if (paymentAmount) {
-        paymentAmount.textContent = `${priceInCurrency} ${symbol} (${productName})`;
+        paymentAmount.textContent = `${priceInCurrency} ${symbol}`;
     }
     
     const paymentModal = document.getElementById('paymentModal');
@@ -207,34 +207,3 @@ function copyToClipboard(text) {
         }
     }
 }
-
-// Плавная прокрутка к якорям
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Закрытие меню при клике вне его области
-document.addEventListener('click', function(e) {
-    const sidebar = document.querySelector('.sidebar');
-    const hamburger = document.querySelector('.hamburger-menu');
-    
-    if (sidebar && sidebar.classList.contains('active') && 
-        !sidebar.contains(e.target) && 
-        !hamburger.contains(e.target)) {
-        sidebar.classList.remove('active');
-    }
-});
-
-// Предотвращение закрытия меню при клике внутри него
-document.querySelector('.sidebar').addEventListener('click', function(e) {
-    e.stopPropagation();
-});
